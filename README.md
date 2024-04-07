@@ -8,6 +8,10 @@
 
 [3. Hướng dẫn cài đặt](#3-hướng-dẫn-cài-đặt)
 
+[4. Hướng dẫn test hệ thống](#4-hướng-dẫn-test-hệ-thống)
+
+[5. Kết quả test](#5-kết-quả-test)
+
 
 ## 1. Thiết kế cơ sở dữ liệu
 ![](./images/Screenshot%202024-04-07%20132028.png)
@@ -187,7 +191,7 @@ curl --location 'http://localhost:3000/salary/withdraw/1213' \
 }'
 ```
 
-## 4. Kết quả test
+## 5. Kết quả test
 
 ### Gọi API lấy số dư của nhân viên 111149 
 ![](./images/Screenshot%202024-04-07%20233122.png)
