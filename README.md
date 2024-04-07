@@ -68,7 +68,7 @@ Số lượng bản ghi cần tính toán có thể rất lớn. Để tối ưu
 
 ### Xử lý dữ liệu ở Database
 
-Tạo JOB [AUTO_CALCULATE_SALARY](Database\5.createJob.sql) chạy vào 12h hằng ngày
+Tạo JOB [AUTO_CALCULATE_SALARY](Database/5.createJob.sql) chạy vào 12h hằng ngày
 ```sql
 BEGIN
     DBMS_SCHEDULER.create_job (
@@ -81,7 +81,7 @@ BEGIN
 END;
 ```
 
-Vào cuối ngày JOB AUTO_CALCULATE_SALARY sẽ tự động gọi thủ tục [JOB_AUTO_CALCULATE_SALARY](Database\PROCEDURES\JOB_AUTO_CALCULATE_SALARY.sql) để thực hiện việc tính toán tiền lương của toàn bộ nhân viên. 
+Vào cuối ngày JOB AUTO_CALCULATE_SALARY sẽ tự động gọi thủ tục [JOB_AUTO_CALCULATE_SALARY](Database/PROCEDURES/JOB_AUTO_CALCULATE_SALARY.sql) để thực hiện việc tính toán tiền lương của toàn bộ nhân viên. 
 Thủ tục sẽ thực hiện tính toán số dư khả dụng theo tháng đến ngày hiện tại dựa vào số dư khả dụng trước đó, mức lương và trạng thái chấm công của ngày hiện tại.
 
 Nếu ngày hiện tại là ngày đầu tháng, hệ thống sẽ tính xem tháng hiện tại có bao nhiêu ngày làm việc và update vào config NUMOFWORKDAY. Tham số NUMOFWORKDAY phục vụ cho việc tính lương hằng ngày của các nhân viên có lương tính theo tháng.
@@ -140,12 +140,12 @@ API này sẽ chỉ thực hiện trừ số dư của nhân viên trong bảng 
 **Yêu cầu:** Oracle DB 19C, Nodejs 16
 ### Cài đặt database
 
-1. Đăng nhập vào user sys của Oracle DB chạy file [1.createSchema.sql](Database\1.createSchema.sql) để tạo schema SALARYHERO
+1. Đăng nhập vào user sys của Oracle DB chạy file [1.createSchema.sql](Database/1.createSchema.sql) để tạo schema SALARYHERO
 2. Đăng nhập vào schema SALARYHERO
-3. Chạy file [2.createTable](Database\2.createTable.sql) để tạo các bảng và sequence của hệ thống
-4. Chạy file [3.insertConfig](Database\3.insertConfig.sql) để insert các tham số config
-5. Chạy file [4.createProcedure.sql](Database\4.createProcedure.sql) để tạo các thủ tục chạy job và select dữ liệu
-6. Chạy file [5.createJob.sql](Database\5.createJob.sql) để tạo job AUTO_CALCULATE_SALARY chạy vào 0h hằng ngày
+3. Chạy file [2.createTable](Database/2.createTable.sql) để tạo các bảng và sequence của hệ thống
+4. Chạy file [3.insertConfig](Database/3.insertConfig.sql) để insert các tham số config
+5. Chạy file [4.createProcedure.sql](Database/4.createProcedure.sql) để tạo các thủ tục chạy job và select dữ liệu
+6. Chạy file [5.createJob.sql](Database/5.createJob.sql) để tạo job AUTO_CALCULATE_SALARY chạy vào 0h hằng ngày
 
 ### Cài đặt service web
 
@@ -162,7 +162,7 @@ npm run dev
 ## 4. Hướng dẫn test hệ thống
 
 ### Dump dữ liệu test
-Chạy file [6.dumpData.sql](Database\6.dumpData.sql) để tạo bộ dữ liệu test. Tham số v_records là số nhân viên được insert (Hiện tại v_records=10000 có thể thay bằng giá trị khác để test). 
+Chạy file [6.dumpData.sql](Database/6.dumpData.sql) để tạo bộ dữ liệu test. Tham số v_records là số nhân viên được insert (Hiện tại v_records=10000 có thể thay bằng giá trị khác để test). 
 
 File này sẽ sinh ra số lượng v_records nhân viên trong bảng EMPLOYEE, thông tin tiền lương tương ứng ở bảng SALARY và thông tin chấm công cho tất cả các ngày trong tháng 4/2024 ở bảng TIMESHEET(Các nhân viên đều có các ngày nghỉ và mức lương RANDOM)
 
