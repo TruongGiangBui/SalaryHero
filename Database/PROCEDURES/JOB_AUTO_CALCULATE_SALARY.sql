@@ -82,11 +82,6 @@ BEGIN
        where config_key='NUMOFWORKDAY';
    end if;
 
-
-
-
-
-
    loop
        select config_value
        into PROCESSING
